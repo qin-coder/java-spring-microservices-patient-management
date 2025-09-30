@@ -1,0 +1,13 @@
+### create a new patient eneity
+POST http://localhost:4000/patients
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "doe@example.com",
+  "address": "123 Main Street, Springfield",
+  "dateOfBirth": "1985-06-15",
+  "registeredDate": "2024-01-10"
+}
+
+###
