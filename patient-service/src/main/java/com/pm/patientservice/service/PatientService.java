@@ -7,6 +7,7 @@ import com.pm.patientservice.exception.PatientNotFoundException;
 import com.pm.patientservice.mapper.PatientMapper;
 import com.pm.patientservice.model.Patient;
 import com.pm.patientservice.repository.PatientRepository;
+import com.pm.patientservice.grpc.BillingServiceGrpcClient;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,18 +16,19 @@ import java.util.UUID;
 
 @Service
 public class PatientService {
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+    private final BillingServiceGrpcClient billingServiceGrpcClient;
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, BillingServiceGrpcClient billingServiceGrpcClient ) {
 
         this.patientRepository = patientRepository;
+        this.billingServiceGrpcClient = billingServiceGrpcClient;
     }
 
     public List<PatientResponseDTO> getAllPatients() {
         List<Patient> patients = patientRepository.findAll();
-        List<PatientResponseDTO> patientDTOs = patients.stream()
+        return patients.stream()
                 .map(PatientMapper::mapToPatientResponseDTO).toList();
-        return patientDTOs;
     }
 
     public PatientResponseDTO createPatient(PatientRequestDTO patientRequestDTO) {
@@ -36,6 +38,8 @@ public class PatientService {
         }
         Patient newPatient =
                 patientRepository.save(PatientMapper.toModel(patientRequestDTO));
+        billingServiceGrpcClient.createBillingAccount(newPatient.getId().toString(),
+                newPatient.getName(), newPatient.getEmail());
         return PatientMapper.mapToPatientResponseDTO(newPatient);
 
     }
