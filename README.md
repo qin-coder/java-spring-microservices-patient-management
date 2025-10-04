@@ -21,7 +21,7 @@ This hospital management system showcases a complete microservices ecosystem wit
 ## 🏗️ Architecture
 
 <div align="center">
-  <img src="pics/1.png" width="100%" />
+  <img src="pics/arch.png" width="100%" />
 </div>
 
 
