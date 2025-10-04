@@ -2,10 +2,10 @@
 
 A distributed healthcare system built with **Spring Boot microservices architecture**, covering **REST API, gRPC, Kafka, Docker, API Gateway, Auth Service (JWT)** and other core enterprise-level concepts.  
 
-This project was built step by step through a full tutorial, resulting in a system that includes **Patient Service, Billing Service, Analytics Service, Auth Service, and API Gateway**.  
+This project was built step by step through a full tutorial from: https://www.youtube.com/watch?v=tseqdcFfTUY&t=28932s, resulting in a system that includes **Patient Service, Billing Service, Analytics Service, Auth Service, and API Gateway**.  
 
 ![Microservices](https://img.shields.io/badge/Architecture-Microservices-blue)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2-green)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.6-green)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
 ![Kafka](https://img.shields.io/badge/Apache%20Kafka-Integrated-orange)
 
